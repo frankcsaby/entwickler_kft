@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entwickler KFT. | Prémium Építőipari Generálkivitelezés</title>
+    
+    <!-- Google Fonts betöltése -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Ikonok betöltése -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Változók és Alapbeállítások --- */
+        :root {
+            --primary-dark: #121E2A;    /* Nagyon sötét kék/szürke - stabilitás */
+            --primary-blue: #1C3144;    /* Elegáns mélykék */
+            --accent-gold: #C59B6D;     /* Elegáns arany/homok szín */
+            --accent-gold-hover: #A67D50;
+            --text-dark: #333333;
+            --text-light: #F8F9FA;
+            --bg-light: #F4F6F8;
+            --bg-white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, .logo {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* --- Felső Információs Sáv (Top Bar) --- */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            padding: 0.5rem 5%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        .top-bar a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-bar a:hover {
+            color: var(--accent-gold);
+        }
+
+        .top-bar i {
+            color: var(--accent-gold);
+            margin-right: 5px;
+        }
+
+        /* --- Navigáció --- */
+        header {
+            background-color: var(--bg-white);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+            font-weight: 400;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Szekció --- */
+        .hero {
+            background: linear-gradient(rgba(18, 30, 42, 0.85), rgba(18, 30, 42, 0.7)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-gold);
+            color: var(--bg-white);
+            text-decoration: none;
+            border-radius: 3px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(197, 155, 109, 0.4);
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 155, 109, 0.6);
+        }
+
+        /* --- Szekciók Általánosan --- */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 15px auto 0;
+        }
+
+        /* --- Szolgáltatások --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--bg-white);
+            padding: 3rem 2rem;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 3px solid var(--accent-gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* --- Rólunk --- */
+        .about-section {
+            background-color: var(--bg-white);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-content strong {
+            color: var(--primary-blue);
+        }
+
+        /* --- Kapcsolat --- */
+        .contact-section {
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+        }
+
+        .contact-section .section-title {
+            color: var(--text-light);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .contact-card a, .contact-card p {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-dark);
+            color: #888;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- Animációk --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Reszponzivitás --- */
+        @media (max-width: 900px) {
+            .top-bar {
+                justify-content: center;
+            }
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem 5%;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Felső Információs Sáv -->
+    <div class="top-bar">
+        <a href="tel:+36305682698"><i class="fa-solid fa-phone"></i> Kátai-Kis Anna: +36 30 568 2698</a>
+        <a href="mailto:kataiotto@gmail.com"><i class="fa-solid fa-envelope"></i> kataiotto@gmail.com</a>
+    </div>
+
+    <!-- Fejléc és Navigáció -->
+    <header>
+        <div class="logo">Entwickler <span>KFT.</span></div>
+        <nav>
+            <ul>
+                <li><a href="#kezdolap">Kezdőlap</a></li>
+                <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+                <li><a href="#rolunk">Rólunk</a></li>
+                <li><a href="#kapcsolat">Kapcsolat</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Szekció -->
+    <section id="kezdolap" class="hero">
+        <h1>Építjük a Jövőt</h1>
+        <p>Prémium minőségű generálkivitelezés, modern könnyűszerkezetes házak és kompromisszummentes építőipari megoldások az Entwickler KFT.-től.</p>
+        <a href="#kapcsolat" class="btn">Kérjen Ajánlatot</a>
+    </section>
+
+    <!-- Szolgáltatások Szekció -->
+    <section id="szolgaltatasok">
+        <h2 class="section-title">Szolgáltatásaink</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-city service-icon"></i>
+                <h3>Generálkivitelezés</h3>
+                <p>Teljes körű projektmenedzsment az alapozástól a kulcsrakész átadásig. Precíz tervezés, átlátható költségvetés és pontos határidők.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-house-chimney service-icon"></i>
+                <h3>Könnyűszerkezetes Házak</h3>
+                <p>Innovatív, energiatakarékos és időtálló otthonok építése. Modern technológiával biztosítjuk a gyors és környezettudatos kivitelezést.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-trowel-bricks service-icon"></i>
+                <h3>Szakipari Munkák</h3>
+                <p>Átfogó felújítások, szerkezetépítés és speciális kőműves munkálatok. Magas minőségű alapanyagokkal és sokéves tapasztalattal dolgozunk.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rólunk Szekció -->
+    <section id="rolunk" class="about-section">
+        <h2 class="section-title">Rólunk</h2>
+        <div class="about-content">
+            <p>Az <strong>Entwickler KFT.</strong> elkötelezett a minőségi építészet és az ügyfélközpontú szolgáltatások iránt. Csapatunk több éves szakmai tapasztalattal rendelkezik, garantálva, hogy minden projektet a legszigorúbb iparági szabványoknak megfelelően valósítunk meg. Legyen szó egy új otthon felépítéséről vagy egy összetett ipari projekt generálkivitelezéséről, célunk a maradandó értékteremtés és a megrendelőink maximális elégedettsége.</p>
+        </div>
+    </section>
+
+    <!-- Kapcsolat Szekció -->
+    <section id="kapcsolat" class="contact-section">
+        <h2 class="section-title">Lépjen velünk kapcsolatba</h2>
+        <div class="contact-wrapper">
+            <div class="contact-card">
+                <i class="fa-solid fa-user-tie"></i>
+                <h4>Kátai-Kis Anna</h4>
+                <p>Projektvezetés / Kapcsolattartás</p>
+                <a href="tel:+36305682698" style="display:block; margin-top:10px; font-weight:bold;">+36 30 568 2698</a>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fa-solid fa-helmet-safety"></i>
+                <h4>Kátai Ottó</h4>
+                <p>Műszaki vezetés / Kivitelezés</p>
+                <a href="tel:+36205388985" style="display:block; margin-top:10px; font-weight:bold;">+36 20 538 8985</a>
+            </div>
+
+            <div class="contact-card">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <h4>E-mail</h4>
+                <p>Kérjen írásos árajánlatot</p>
+                <a href="mailto:kataiotto@gmail.com" style="display:block; margin-top:10px; font-weight:bold;">kataiotto@gmail.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Entwickler KFT. | Minden jog fenntartva. | Építjük a jövőt.</p>
+    </footer>
+
+</body>
+</html>
