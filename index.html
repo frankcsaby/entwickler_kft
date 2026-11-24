@@ -249,6 +249,268 @@
             font-size: 0.95rem;
         }
 
+        /* --- Látványtervek (főoldali portfólió) --- */
+        section.lt-section {
+            position: relative;
+            padding: 7rem 6%;
+            background-color: var(--primary-dark);
+            /* Tervrajz-rács háttér */
+            background-image:
+                linear-gradient(rgba(197, 155, 109, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(197, 155, 109, 0.07) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+            color: var(--text-light);
+            overflow: hidden;
+        }
+
+        .lt-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .lt-head {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 3rem;
+            align-items: end;
+            margin-bottom: 3.5rem;
+        }
+
+        .lt-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .lt-eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background-color: var(--accent-gold);
+        }
+
+        .lt-head h2 {
+            font-size: clamp(2rem, 4.5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .lt-head h2 em {
+            font-style: normal;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--accent-gold);
+        }
+
+        .lt-head-side p {
+            color: rgba(248, 249, 250, 0.7);
+            font-weight: 300;
+            margin-bottom: 1.8rem;
+            max-width: 480px;
+        }
+
+        .lt-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.9rem 1.6rem;
+            border: 1px solid rgba(197, 155, 109, 0.6);
+            transition: var(--transition);
+        }
+
+        .lt-link i { color: var(--accent-gold); transition: var(--transition); }
+
+        .lt-link:hover {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        .lt-link:hover i { color: var(--text-light); transform: translateX(4px); }
+
+        /* Bento rács */
+        .lt-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 260px;
+            gap: 1.2rem;
+        }
+
+        .lt-card {
+            position: relative;
+            overflow: hidden;
+            display: block;
+            color: var(--text-light);
+            text-decoration: none;
+            /* Tartalék háttér, ha a kép nem töltődik be */
+            background:
+                linear-gradient(rgba(197, 155, 109, 0.15) 1px, transparent 1px) 0 0 / 20px 20px,
+                linear-gradient(90deg, rgba(197, 155, 109, 0.15) 1px, transparent 1px) 0 0 / 20px 20px,
+                var(--primary-blue);
+        }
+
+        .lt-card--featured { grid-column: span 2; grid-row: span 2; }
+        .lt-card--wide { grid-column: span 2; }
+
+        .lt-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .lt-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(18, 30, 42, 0.92) 0%, rgba(18, 30, 42, 0.25) 45%, rgba(18, 30, 42, 0) 70%);
+            transition: var(--transition);
+        }
+
+        /* Tervrajz-szerű sarokjelek */
+        .lt-corner {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            z-index: 2;
+            border-color: var(--accent-gold);
+            border-style: solid;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .lt-corner--tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; transform: translate(-8px, -8px); }
+        .lt-corner--br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; transform: translate(8px, 8px); }
+
+        .lt-card:hover img { transform: scale(1.06); }
+        .lt-card:hover .lt-corner { opacity: 1; transform: translate(0, 0); }
+        .lt-card:hover::after { background: linear-gradient(to top, rgba(18, 30, 42, 0.95) 0%, rgba(18, 30, 42, 0.4) 60%, rgba(18, 30, 42, 0.1) 100%); }
+
+        .lt-num {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.4rem;
+            z-index: 2;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: rgba(248, 249, 250, 0.85);
+        }
+
+        .lt-info {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            padding: 1.6rem 1.8rem;
+        }
+
+        .lt-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            background-color: var(--accent-gold);
+            padding: 0.2rem 0.7rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .lt-info h3 {
+            font-size: 1.25rem;
+            line-height: 1.3;
+            margin-bottom: 0.4rem;
+        }
+
+        .lt-card--featured .lt-info h3 { font-size: 1.8rem; }
+
+        .lt-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.2rem;
+            font-size: 0.85rem;
+            color: rgba(248, 249, 250, 0.75);
+        }
+
+        .lt-meta i { color: var(--accent-gold); margin-right: 0.35rem; }
+
+        .lt-swipe-hint { display: none; }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .lt-head { grid-template-columns: 1fr; gap: 1.5rem; }
+            .lt-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 240px; }
+            .lt-card--featured { grid-column: span 2; grid-row: span 2; }
+            .lt-card--wide { grid-column: span 2; }
+        }
+
+        /* Telefon: lapozható, oldalra húzható kártyák */
+        @media (max-width: 700px) {
+            section.lt-section { padding: 4.5rem 16px; }
+            .lt-head { margin-bottom: 2rem; }
+            .lt-head-side p { font-size: 0.95rem; }
+
+            .lt-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                gap: 0.9rem;
+                margin: 0 -16px;
+                padding: 0 16px 0.5rem;
+                scrollbar-width: none;
+            }
+            .lt-grid::-webkit-scrollbar { display: none; }
+
+            .lt-card,
+            .lt-card--featured,
+            .lt-card--wide {
+                flex: 0 0 85%;
+                height: 420px;
+                scroll-snap-align: center;
+            }
+
+            .lt-card--featured .lt-info h3,
+            .lt-info h3 { font-size: 1.3rem; }
+            .lt-info { padding: 1.3rem 1.3rem; }
+            .lt-corner { opacity: 1; transform: none; }
+
+            .lt-swipe-hint {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.6rem;
+                margin-top: 1.2rem;
+                font-size: 0.8rem;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: rgba(248, 249, 250, 0.55);
+            }
+            .lt-swipe-hint i { color: var(--accent-gold); }
+
+            .lt-link { width: 100%; justify-content: center; }
+        }
+
         /* --- Rólunk --- */
         .about-section {
             background-color: var(--bg-white);
@@ -374,6 +636,7 @@
             <ul>
                 <li><a href="#kezdolap">Kezdőlap</a></li>
                 <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+                <li><a href="#latvanytervek">Látványtervek</a></li>
                 <li><a href="#rolunk">Rólunk</a></li>
                 <li><a href="#kapcsolat">Kapcsolat</a></li>
             </ul>
@@ -406,6 +669,79 @@
                 <h3>Szakipari Munkák</h3>
                 <p>Átfogó felújítások, szerkezetépítés és speciális kőműves munkálatok. Magas minőségű alapanyagokkal és sokéves tapasztalattal dolgozunk.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Látványtervek Szekció -->
+    <!-- FIGYELEM: az alábbi képek ideiglenes (Unsplash) mintaképek – élesítés előtt cseréld saját látványtervekre (images/latvanytervek/). -->
+    <section id="latvanytervek" class="lt-section">
+        <div class="lt-inner">
+            <div class="lt-head">
+                <div>
+                    <div class="lt-eyebrow">Látványtervek</div>
+                    <h2>Tervtől a <em>kulcsrakész</em> otthonig</h2>
+                </div>
+                <div class="lt-head-side">
+                    <p>Minden projekt egy pontos látványtervvel indul. Így már az építkezés előtt látja, hogyan fog kinézni az otthona, és közösen dönthetünk az anyagokról és a részletekről.</p>
+                    <a href="latvanytervek.html" class="lt-link">Összes látványterv <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="lt-grid">
+                <a href="latvanytervek.html" class="lt-card lt-card--featured">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Modern családi ház látványterve" loading="lazy" onerror="this.remove()">
+                    <span class="lt-corner lt-corner--tl"></span>
+                    <span class="lt-corner lt-corner--br"></span>
+                    <span class="lt-num">01</span>
+                    <div class="lt-info">
+                        <span class="lt-tag">Generálkivitelezés</span>
+                        <h3>Modern családi ház</h3>
+                        <div class="lt-meta">
+                            <span><i class="fa-solid fa-ruler-combined"></i>180 m²</span>
+                            <span><i class="fa-solid fa-location-dot"></i>Budapest környéke</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="latvanytervek.html" class="lt-card lt-card--wide">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80" alt="Könnyűszerkezetes ház látványterve" loading="lazy" onerror="this.remove()">
+                    <span class="lt-corner lt-corner--tl"></span>
+                    <span class="lt-corner lt-corner--br"></span>
+                    <span class="lt-num">02</span>
+                    <div class="lt-info">
+                        <span class="lt-tag">Könnyűszerkezet</span>
+                        <h3>Energiatakarékos otthon</h3>
+                        <div class="lt-meta">
+                            <span><i class="fa-solid fa-ruler-combined"></i>140 m²</span>
+                            <span><i class="fa-solid fa-leaf"></i>Közel nulla energia</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="latvanytervek.html" class="lt-card">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80" alt="Nappali belsőépítészeti látványterve" loading="lazy" onerror="this.remove()">
+                    <span class="lt-corner lt-corner--tl"></span>
+                    <span class="lt-corner lt-corner--br"></span>
+                    <span class="lt-num">03</span>
+                    <div class="lt-info">
+                        <span class="lt-tag">Belső tér</span>
+                        <h3>Nappali és konyha</h3>
+                    </div>
+                </a>
+
+                <a href="latvanytervek.html" class="lt-card">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" alt="Felújított ház látványterve" loading="lazy" onerror="this.remove()">
+                    <span class="lt-corner lt-corner--tl"></span>
+                    <span class="lt-corner lt-corner--br"></span>
+                    <span class="lt-num">04</span>
+                    <div class="lt-info">
+                        <span class="lt-tag">Felújítás</span>
+                        <h3>Teljes körű felújítás</h3>
+                    </div>
+                </a>
+            </div>
+
+            <div class="lt-swipe-hint"><i class="fa-solid fa-hand-pointer"></i> Húzza oldalra a további tervekért</div>
         </div>
     </section>
 
